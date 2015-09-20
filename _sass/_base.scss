@@ -40,11 +40,12 @@ ul, ol, dl, figure,
 /**
  * Images
  */
+/*
 img {
     max-width: 100%;
     vertical-align: middle;
 }
-
+*/
 
 
 /**
@@ -201,4 +202,36 @@ pre {
             fill: $grey-color;
         }
     }
+}
+
+
+/*
+ * Masonry stuff
+ */
+.gallery {
+  background: #DDD;
+  padding: 5px;
+}
+
+/* clear fix */
+.gallery:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-item {
+  max-width: 350px;
+  margin: 5px;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
 }

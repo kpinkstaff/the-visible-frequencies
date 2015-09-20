@@ -1,0 +1,4 @@
+# Developer mode settings
+# Add to defaults eg. jekyll serve --config _config.yml,_config_dev.yml
+---
+debug: True

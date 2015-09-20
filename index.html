@@ -4,6 +4,20 @@ layout: default
 
 <div class="home">
 
+  <h1 class="page-heading">Galleries</h1>
+  <ul class="post-list">
+    {% for gallery in site.data.galleries %}
+      <li>
+        <h2 class="page-heading">{{ gallery.name }}</h2>
+        <div
+          class="gallery"
+          data-drive-link="{{ gallery.drive_link }}">
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <!--
   <h1 class="page-heading">Posts</h1>
 
   <ul class="post-list">
@@ -17,7 +31,43 @@ layout: default
       </li>
     {% endfor %}
   </ul>
-
+  -->
+  <!--
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+  -->
 </div>
+
+{% if site.debug %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+{% else %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+{% endif %}
+
+<script src="/scripts/main.js"></script>
+
+<!-- Photoswipe setup -->
+  <!-- Core CSS file -->
+  <link rel="stylesheet" href="/vendor/photoswipe/photoswipe.css"> 
+
+  <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+       In the folder of skin CSS file there are also:
+       - .png and .svg icons sprite, 
+       - preloader.gif (for browsers that do not support CSS animations) -->
+  <link rel="stylesheet" href="/vendor/photoswipe/default-skin/default-skin.css"> 
+
+  <!-- Core JS file -->
+  {% if site.debug %}
+  <script src="/vendor/photoswipe/photoswipe.js"></script> 
+  {% else %}
+  <script src="/vendor/photoswipe/photoswipe.min.js"></script> 
+  {% endif %}
+
+  <!-- UI JS file -->
+  {% if site.debug %}
+  <script src="/vendor/photoswipe/photoswipe-ui-default.js"></script> 
+  {% else %}
+  <script src="/vendor/photoswipe/photoswipe-ui-default.min.js"></script> 
+  {% endif %}
+<!-- End Photoswipe setup -->
+
+{% include photoswipe_dialog.html %}
