@@ -12,9 +12,6 @@ instagram_username:
 # Build settings
 markdown: kramdown
 
-# Build a page for each gallery
-page_gen:
-  - data: 'galleries'
-    template: 'gallery_page'
-    name: 'name'
-    dir: 'galleries'
+collections:
+  galleries:
+    output: true
