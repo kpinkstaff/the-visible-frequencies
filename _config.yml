@@ -3,7 +3,7 @@ title: Seen
 email: kpinksphoto@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Photography by Kerianne Pinkstaff
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/kp-photo-website" # the subpath of your site, e.g. /blog/
 url: "http://example.com" # the base hostname & protocol for your site
 twitter_username:
 github_username:
