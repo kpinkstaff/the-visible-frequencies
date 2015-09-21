@@ -5,7 +5,7 @@ layout: default
 <div class="home">
   {% for gallery in site.galleries %}
   <div class="gallery-panel">
-    <a href="{{ gallery.url }}">
+    <a href="{{ site.baseurl }}{{ gallery.url }}">
       <img class="gallery-thumb" data-drive-link="{{ gallery.front_image_url }}"/>
       <h2 class="panel-label">{{ gallery.title }}</h2>
     </a>
