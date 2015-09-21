@@ -202,6 +202,35 @@ pre {
     }
 }
 
+/*
+ * Instagram Icon
+ */
+
+.ig-b- img {
+    visibility: hidden;
+}
+
+.ig-b-:hover {
+    background-position: 0 -60px;
+}
+
+.ig-b-:active {
+    background-position: 0 -120px;
+}
+
+.ig-b-16 {
+    width: 16px;
+    height: 16px;
+    background: url(//badges.instagram.com/static/images/ig-badge-sprite-16.png) no-repeat 0 0;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .ig-b-16 {
+        background-image: url(//badges.instagram.com/static/images/ig-badge-sprite-16@2x.png);
+        background-size: 60px 178px;
+    }
+}
+
 
 /*
  * Masonry stuff
@@ -215,4 +244,22 @@ pre {
 
 .grid-item img {
   max-height: 100%;
+}
+
+/*
+ * Front Page
+ */
+
+.gallery-panel {
+    /* To correctly align image, regardless of content height: */
+    vertical-align: top;
+    display: inline-block;
+    /* To horizontally center images and caption */
+    text-align: center;
+    padding: 12px;
+}
+
+.panel-label {
+    font-weight: 400;
+    padding: 12px;
 }

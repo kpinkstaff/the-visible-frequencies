@@ -1,9 +1,6 @@
 <footer class="site-footer">
 
   <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title }}</h2>
-
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
@@ -39,6 +36,18 @@
               </span>
 
               <span class="username">{{ site.twitter_username }}</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% if site.instagram_username %}
+          <li>
+            <a href="http://instagram.com/{{ site.instagram_username }}?ref=badge"
+               class="ig-b- ig-b-16">
+              <span class="icon icon--instagram">
+                <img src="//badges.instagram.com/static/images/ig-badge-16.png" alt="Instagram"/>
+              </span>
+              <span class="username">{{ site.instagram_username }}</span>
             </a>
           </li>
           {% endif %}

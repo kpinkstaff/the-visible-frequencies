@@ -1,13 +1,10 @@
 ---
-- name: Test
-  front_image_url:
-  drive_link: "https://drive.google.com/folderview?id=0B8JCaRF4U5MLSnRUZ0dxdVdtcTA&usp=sharing"
 - name: Nature
-  front_image_url:
+  front_image_url: "https://drive.google.com/file/d/0B1V5a-ykS8okMFdFbXJWUXVTQkk/view?usp=sharing"
   drive_link: "https://drive.google.com/folderview?id=0B1V5a-ykS8okakFKM2plR2JhaG8&usp=sharing"
 - name: People
-  front_image_url:
+  front_image_url: "https://drive.google.com/file/d/0B1V5a-ykS8okSUZkQmxYaFFxeEE/view?usp=sharing"
   drive_link: "https://drive.google.com/folderview?id=0B1V5a-ykS8oka0FHREJsODlJZGs&usp=sharing"
 - name: Still
-  front_image_url:
+  front_image_url: "https://drive.google.com/file/d/0B1V5a-ykS8okZUJXMmdjdC1ablU/view?usp=sharing"
   drive_link: "https://drive.google.com/folderview?id=0B1V5a-ykS8okQlF5Zkw5VnhyYkk&usp=sharing"
