@@ -39,20 +39,13 @@
 
     var folderIdRegex = /id=([^&]*)/;
     var driveFolderId = folderIdRegex.exec(parser.search)[1];
-    var folderUrl = 'https://googledrive.com/host/' + driveFolderId + '/'
-    console.log(folderUrl);
+    var folderUrl = 'https://googledrive.com/host/' + driveFolderId + '/';
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
-        var imageUrls = [
-          'http://placehold.it/1200x900',
-          'http://placehold.it/850x650',
-          'http://placehold.it/300x500',
-          'http://placehold.it/450x350'
-        ];
-
         var filenameRegex = new RegExp('<a href="/host/' + driveFolderId + '/(.*?)">', 'g');
+        var imageUrls = [];
         var matchResult = [];
         while (matchResult = filenameRegex.exec(xhr.responseText)) {
           imageUrls.unshift(folderUrl + matchResult[1]);
@@ -70,8 +63,7 @@
     (function (gallery) {
       var msnry = new Masonry(gallery, {
         itemSelector: '.grid-item',
-        columnWidth: 5,
-        gutter: 10,
+        columnWidth: 5
       });
 
       getImageUrlsForFolder(gallery.getAttribute('data-drive-link'), function(imageUrls) {
@@ -89,7 +81,6 @@
           div.appendChild(anchor);
           gallery.appendChild(div);
           msnry.appended(div);
-          msnry.layout();
           div.onclick = function() {
             openPhotoSwipe(imageUrls, index);
             return false;

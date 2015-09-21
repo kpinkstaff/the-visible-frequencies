@@ -1,5 +1,13 @@
 ---
-- name: Sloths
+- name: Test
+  front_image_url:
   drive_link: "https://drive.google.com/folderview?id=0B8JCaRF4U5MLSnRUZ0dxdVdtcTA&usp=sharing"
-- name: Pandas
-  drive_link: "https://drive.google.com/folderview?id=0B8JCaRF4U5MLNkJBcjJ5QjZrN1k&usp=sharing"
+- name: Nature
+  front_image_url:
+  drive_link: "https://drive.google.com/folderview?id=0B1V5a-ykS8okakFKM2plR2JhaG8&usp=sharing"
+- name: People
+  front_image_url:
+  drive_link: "https://drive.google.com/folderview?id=0B1V5a-ykS8oka0FHREJsODlJZGs&usp=sharing"
+- name: Still
+  front_image_url:
+  drive_link: "https://drive.google.com/folderview?id=0B1V5a-ykS8okQlF5Zkw5VnhyYkk&usp=sharing"
