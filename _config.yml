@@ -1,8 +1,7 @@
 # Site settings
 title: Seen
 email: kpinksphoto@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Photography by Kerianne Pinkstaff
+description: 
 baseurl: "/kp-photo-website" # the subpath of your site, e.g. /blog/
 url: "http://example.com" # the base hostname & protocol for your site
 twitter_username:
