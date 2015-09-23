@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-require 'json'
-require 'open-uri'
-versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+# update 39 to whatever version is currently in use by GitHub to ensure compatibility
 
-gem 'github-pages', versions['github-pages']
+gem 'github-pages', '39'
