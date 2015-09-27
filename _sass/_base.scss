@@ -237,9 +237,10 @@ pre {
  */
 
 .grid-item {
-  margin: 5px;
+  padding: 5px;
   float: left;
-  max-width: 33.333%;
+  max-width: 25%;
+  min-width: 120px;
 }
 
 .grid-item img {

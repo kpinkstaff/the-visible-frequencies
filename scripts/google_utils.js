@@ -1,7 +1,18 @@
 (function(exports) {
-  exports.getThumbUrl = function(imageUrl, maxWidth) {
-    return 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&url='
-      + encodeURIComponent(imageUrl) + '&resize_w=' + maxWidth + '&refresh=43200'; // 12hr cache
+  exports.getCachedImageUrl = function(imageUrl, options) {
+    var options = options || {};
+
+    var url = 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus';
+    url += '&url=' + encodeURIComponent(imageUrl);
+    if(options.maxWidth) {
+      url += '&resize_w=' + options.maxWidth;
+    }
+    if(options.maxHeight) {
+      url += '&resize_h=' + options.maxHeight;
+    }
+    var maxAgeSeconds = options.maxAgeSeconds || 60 * 60 * 24 *30; //30 day default
+    url += '&refresh=' + maxAgeSeconds;
+    return url;
   };
 
   exports.getDriveUrl = function(assetId) {

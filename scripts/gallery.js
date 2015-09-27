@@ -37,7 +37,7 @@
     (function (gallery) {
       var msnry = new Masonry(gallery, {
         itemSelector: '.grid-item',
-        columnWidth: 10
+        percentPosition: true
       });
 
       googleUtils.getImageUrlsForFolder(gallery.getAttribute('data-drive-link'), function(imageUrls) {
@@ -46,7 +46,7 @@
           thumb.onload = function() {
             msnry.layout();
           };
-          var thumbSrc = googleUtils.getThumbUrl(imageUrl, 240);
+          var thumbSrc = googleUtils.getCachedImageUrl(imageUrl, { maxWidth: 240 });
           thumb.src = thumbSrc;
           var anchor = document.createElement('a');
           anchor.href = imageUrl;
