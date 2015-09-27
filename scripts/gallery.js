@@ -5,35 +5,72 @@
       .substring(1);
   };
 
-  function openPhotoSwipe(imageSrcList, index) {
-    var images = imageSrcList.map(function(source) {
-      return { src: source, w:200, h:200};
+  function openPhotoSwipe(imageInfos, galleryUid, index, thumbToAnimateFrom) {
+    var pswpItems = imageInfos.map(function(imageInfo) {
+      return {
+        src: imageInfo.url,
+        msrc: imageInfo.thumbUrl,
+        w: imageInfo.thumbWidth,
+        h: imageInfo.thumbHeight,
+        pid: encodeURIComponent(imageInfo.url)
+      };
     });
 
     var pswpElement = document.querySelectorAll('.pswp')[0];
 
-    var options = {
+    if(thumbToAnimateFrom) {
+      var getThumbBoundsFn = function(index) {
+        var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+        var rect = thumbToAnimateFrom.getBoundingClientRect();
+        return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+      }
+    }
+
+    var pswpOptions = {
       index: index,
-      showHideOpacity: true
+      showHideOpacity: true,
+      preload: [1,1],
+      getThumbBoundsFn: getThumbBoundsFn,
+      galleryUid: galleryUid,
+      galleryPIDs: true,
+      captionEl: false,
+      shareEl: false
     };
 
-    var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, images, options);
+    var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, pswpItems, pswpOptions);
 
     pswp.listen('imageLoadComplete', function(index, item) {
-      var img = new Image();
-      img.onload = function () {
-        item.w = img.naturalWidth;
-        item.h = img.naturalHeight;
-        pswp.updateSize(true);
-      }
-      img.src = item.src;
+      item.w = item.container.lastChild.naturalWidth;
+      item.h = item.container.lastChild.naturalHeight;
+      pswp.updateSize(true);
     });
 
     pswp.init();
   };
 
+  function parseHash(hash) {
+    var params = {};
+    if(hash.length < 6) {
+        return params;
+    }
+    var vars = hash.substring(1).split('&');
+    for (var i = 0; i < vars.length; i++) {
+        if(!vars[i]) {
+            continue;
+        }
+        var pair = vars[i].split('=');
+        if(pair.length < 2) {
+            continue;
+        }
+        params[pair[0]] = pair[1];
+    }
+    return params;
+  };
+
+  var hashArgs = parseHash(window.location.hash);
+
   var galleries = document.querySelectorAll('.gallery');
-  for (var i = 0; i < galleries.length; ++i) {
+  for (var galleryId = 0; galleryId < galleries.length; ++galleryId) {
     (function (gallery) {
       var msnry = new Masonry(gallery, {
         itemSelector: '.grid-item',
@@ -41,29 +78,42 @@
       });
 
       googleUtils.getImageUrlsForFolder(gallery.getAttribute('data-drive-link'), function(imageUrls) {
-        imageUrls.forEach(function(imageUrl, index) {
+        var imageInfos = imageUrls.map(function(imageUrl) {
+          return {
+            url: imageUrl,
+            thumbUrl: googleUtils.getCachedImageUrl(imageUrl, { maxWidth: 240 }),
+            thumbHeight: 240,
+            thumbWidth: 240
+          }
+        });
+        imageInfos.forEach(function(imageInfo, index) {
           var thumb = document.createElement('img');
           thumb.onload = function() {
+            imageInfo.thumbHeight = thumb.naturalHeight;
+            imageInfo.thumbHeight = thumb.naturalWidth;
+            var anchor = document.createElement('a');
+            anchor.href = imageInfo.url;
+            anchor.appendChild(thumb);
+            var div = document.createElement('div');
+            div.className = 'grid-item';
+            div.appendChild(anchor);
+            gallery.appendChild(div);
+            msnry.appended(div);
             msnry.layout();
+            div.onclick = function() {
+              openPhotoSwipe(imageInfos, galleryId, index, thumb);
+              return false;
+            };
           };
-          var thumbSrc = googleUtils.getCachedImageUrl(imageUrl, { maxWidth: 240 });
-          thumb.src = thumbSrc;
-          var anchor = document.createElement('a');
-          anchor.href = imageUrl;
-          anchor.appendChild(thumb);
-          var div = document.createElement('div');
-          div.className = 'grid-item';
-          div.appendChild(anchor);
-          gallery.appendChild(div);
-          msnry.appended(div);
-          msnry.layout();
-          div.onclick = function() {
-            openPhotoSwipe(imageUrls, index);
-            return false;
-          };
+          thumb.src = imageInfo.thumbUrl;
         });
+
+        if(hashArgs.gid == galleryId) {
+          openPhotoSwipe(imageInfos, galleryId);
+        }
       });
-    })(galleries[i]);
+
+    })(galleries[galleryId]);
   };
 })(googleUtils);
 
