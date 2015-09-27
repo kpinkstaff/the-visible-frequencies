@@ -13,6 +13,6 @@ A static website built using jekyll, compatible with GitHub Pages, sourcing phot
    ```
    Server address: http://0.0.0.0:4000/kp-photo-website/
    ```
-1. Now go to <http://0.0.0.0:4000/kp-photo-website> in your browser to see the site.
+1. Now go to <http://0.0.0.0:4000/kp-photo-website/> in your browser to see the site.
 
 See the [Jekyll documentation](https://jekyllrb.com/docs/home/) for more info on developing a static site with Jekyll.
