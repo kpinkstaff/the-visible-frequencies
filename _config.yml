@@ -11,6 +11,11 @@ instagram_username:
 # Build settings
 markdown: kramdown
 
+exclude:
+- README.md
+- Gemfile
+- Gemfile.lock
+
 collections:
   galleries:
     output: true
