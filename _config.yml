@@ -2,8 +2,8 @@
 title: Seen
 email: kpinksphoto@gmail.com
 description: 
-baseurl: "/kp-photo-website" # the subpath of your site, e.g. /blog/
-url: "http://example.com" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://www.thevisiblefrequencies.com" # the base hostname & protocol for your site
 twitter_username:
 github_username:
 instagram_username:
