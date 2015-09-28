@@ -1,12 +1,12 @@
 # Site settings
-title: The Visible Frequencies
-email: kpinksphoto@gmail.com
+title: the visible frequencies
+email: photos@thevisiblefrequencies.com
 description: 
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://www.thevisiblefrequencies.com" # the base hostname & protocol for your site
+url: "http://www.thevisiblefrequencies.com" # the base hostname & protocol for your site
 twitter_username:
 github_username:
-instagram_username:
+instagram_username: thevisiblefrequencies
 
 # Build settings
 markdown: kramdown
