@@ -74,7 +74,7 @@
     (function (gallery) {
       var msnry = new Masonry(gallery, {
         itemSelector: '.grid-item',
-        percentPosition: true
+        isFitWidth: true
       });
 
       googleUtils.getImageUrlsForFolder(gallery.getAttribute('data-drive-link'), function(imageUrls) {
@@ -98,7 +98,7 @@
             div.className = 'grid-item';
             div.appendChild(anchor);
             gallery.appendChild(div);
-            msnry.appended(div);
+            msnry.addItems(div);
             msnry.layout();
             div.onclick = function() {
               openPhotoSwipe(imageInfos, galleryId, index, thumb);
