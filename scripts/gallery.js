@@ -40,9 +40,14 @@
     var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, pswpItems, pswpOptions);
 
     pswp.listen('imageLoadComplete', function(index, item) {
-      item.w = item.container.lastChild.naturalWidth;
-      item.h = item.container.lastChild.naturalHeight;
-      pswp.updateSize(true);
+      for(var i = 0; i < item.container.childNodes.length; ++i) {
+        if(item.container.childNodes[i].src == item.src) {
+          item.w = item.container.childNodes[i].naturalWidth;
+          item.h = item.container.childNodes[i].naturalHeight;
+          pswp.updateSize(true);
+          break;
+        }
+      }
     });
 
     pswp.init();
