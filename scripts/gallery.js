@@ -5,7 +5,7 @@
       .substring(1);
   };
 
-  function openPhotoSwipe(imageInfos, galleryUid, index, thumbToAnimateFrom) {
+  function openPhotoSwipe(imageInfos, galleryUid, index) {
     var pswpItems = imageInfos.map(function(imageInfo) {
       return {
         src: imageInfo.url,
@@ -18,11 +18,13 @@
 
     var pswpElement = document.querySelectorAll('.pswp')[0];
 
-    if(thumbToAnimateFrom) {
-      var getThumbBoundsFn = function(index) {
+    var getThumbBoundsFn = function(index) {
+      if (imageInfos[index].thumbElement) {
         var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-        var rect = thumbToAnimateFrom.getBoundingClientRect();
+        var rect = imageInfos[index].thumbElement.getBoundingClientRect();
         return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+      } else {
+        return { x:0, y:0, w:0 };
       }
     }
 
@@ -93,6 +95,7 @@
         });
         imageInfos.forEach(function(imageInfo, index) {
           var thumb = document.createElement('img');
+          imageInfo.thumbElement = thumb;
           thumb.onload = function() {
             imageInfo.thumbHeight = thumb.naturalHeight;
             imageInfo.thumbWidth = thumb.naturalWidth;
@@ -103,10 +106,10 @@
             div.className = 'grid-item';
             div.appendChild(anchor);
             gallery.appendChild(div);
-            msnry.addItems(div);
+            msnry.appended(div);
             msnry.layout();
             div.onclick = function() {
-              openPhotoSwipe(imageInfos, galleryId, index, thumb);
+              openPhotoSwipe(imageInfos, galleryId, index);
               return false;
             };
           };
