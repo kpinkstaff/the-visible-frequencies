@@ -95,7 +95,7 @@
           var thumb = document.createElement('img');
           thumb.onload = function() {
             imageInfo.thumbHeight = thumb.naturalHeight;
-            imageInfo.thumbHeight = thumb.naturalWidth;
+            imageInfo.thumbWidth = thumb.naturalWidth;
             var anchor = document.createElement('a');
             anchor.href = imageInfo.url;
             anchor.appendChild(thumb);
