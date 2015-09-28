@@ -7,11 +7,23 @@
 
   function openPhotoSwipe(imageInfos, galleryUid, index) {
     var pswpItems = imageInfos.map(function(imageInfo) {
+      var inGallerySize = {};
+      var cacheOptions = {};
+      if(imageInfo.thumbWidth > imageInfo.thumbHeight) {
+        cacheOptions.maxWidth = 1024;
+        inGallerySize.width = 1024;
+        inGallerySize.height = (1024 / imageInfo.thumbWidth) * imageInfo.thumbHeight;
+      } else {
+        cacheOptions.maxHeight = 768;
+        inGallerySize.height = 768;
+        inGallerySize.width = (768 / imageInfo.thumbHeight) * imageInfo.thumbWidth;
+      }
+      var cachedImageUrl = googleUtils.getCachedImageUrl(imageInfo.url, cacheOptions);
       return {
-        src: imageInfo.url,
+        src: cachedImageUrl,
         msrc: imageInfo.thumbUrl,
-        w: imageInfo.thumbWidth,
-        h: imageInfo.thumbHeight,
+        w: imageInfo.fullWidth || inGallerySize.width,
+        h: imageInfo.fullHeight || inGallerySize.height,
         pid: encodeURIComponent(imageInfo.url)
       };
     });
@@ -44,8 +56,8 @@
     pswp.listen('imageLoadComplete', function(index, item) {
       for(var i = 0; i < item.container.childNodes.length; ++i) {
         if(item.container.childNodes[i].src == item.src) {
-          item.w = item.container.childNodes[i].naturalWidth;
-          item.h = item.container.childNodes[i].naturalHeight;
+          item.w = imageInfos[index].fullWidth = item.container.childNodes[i].naturalWidth;
+          item.h = imageInfos[index].fullHeight = item.container.childNodes[i].naturalHeight;
           pswp.updateSize(true);
           break;
         }
