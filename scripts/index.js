@@ -4,7 +4,7 @@
     (function (galleryThumb) {
       var driveLink = galleryThumb.getAttribute('data-drive-link');
       var imageUrl = googleUtils.getPlainUrlFromFileShareLink(driveLink);
-      galleryThumb.src = googleUtils.getCachedImageUrl(imageUrl, { maxWidth: 350 });
+      galleryThumb.src = googleUtils.getCachedImageUrl(imageUrl, { maxWidth: 250 });
     })(galleryThumbs[i]);
   }
 })(window.googleUtils);

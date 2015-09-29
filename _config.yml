@@ -1,7 +1,9 @@
 # Site settings
 title: the visible frequencies
-email: photos@thevisiblefrequencies.com
-description: 
+email: kerianne@thevisiblefrequencies.com
+description: >
+  Here's some light I caught. Welcome to my collection.<br>
+  - Kerianne Pinkstaff
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.thevisiblefrequencies.com" # the base hostname & protocol for your site
 twitter_username:
@@ -12,9 +14,11 @@ instagram_username: thevisiblefrequencies
 markdown: kramdown
 
 exclude:
-- README.md
+- CNAME
 - Gemfile
 - Gemfile.lock
+- README.md
+- LICENSE
 
 collections:
   galleries:
