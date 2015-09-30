@@ -5,9 +5,9 @@ layout: default
 <div class="home">
   {% for gallery in site.galleries %}
   <div class="gallery-panel">
-    <a href="{{ root }}{{ gallery.url }}">
+    <a class="nohover" href="{{ root }}{{ gallery.url }}">
       <img class="gallery-thumb" data-drive-link="{{ gallery.front_image_url }}"/>
-      <h1 class="panel-label">{{ gallery.title }}</h1>
+      <h2 class="panel-label">{{ gallery.title }}</h2>
     </a>
   </div>
   {% endfor %}

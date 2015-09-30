@@ -17,12 +17,11 @@ body {
     font-family: $base-font-family;
     font-size: $base-font-size;
     line-height: $base-line-height;
-    // This font is crazy tight so add some spacing globally
-    letter-spacing: 0.05em;
-    font-weight: 300;
+    font-weight: normal;
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
 }
 
 
@@ -68,7 +67,7 @@ li {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 500;
+    font-weight: normal;
 }
 
 
@@ -85,7 +84,7 @@ a {
     }
 
     &:hover {
-        color: $text-color;
+        color: $brand-color;
         text-decoration: underline;
     }
 }
@@ -231,4 +230,8 @@ pre {
     /* To horizontally center images and caption */
     text-align: center;
     padding: 12px;
+}
+
+a.nohover:hover {
+    text-decoration: none;
 }
