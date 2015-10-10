@@ -16,3 +16,9 @@ A static website built using jekyll, compatible with GitHub Pages, sourcing phot
 1. Now go to <http://127.0.0.1:4000/> in your browser to see the site.
 
 See the [Jekyll documentation](https://jekyllrb.com/docs/home/) for more info on developing a static site with Jekyll.
+
+## TODO
+
+- [ ] Add Google Analytics
+- [ ] Make landscape photos have wider thumbnails
+- [ ] Experiment with selling prints
