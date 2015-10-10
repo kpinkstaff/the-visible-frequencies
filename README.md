@@ -11,8 +11,8 @@ A static website built using jekyll, compatible with GitHub Pages, sourcing phot
 1. Run the development server `bundle exec jekyll serve --config _config.yml,_config_dev.yml`
 1. You should see some ouput including something like:
    ```
-   Server address: http://0.0.0.0:4000/kp-photo-website/
+   Server address: http://0.0.0.0:4000/
    ```
-1. Now go to <http://0.0.0.0:4000/kp-photo-website/> in your browser to see the site.
+1. Now go to <http://127.0.0.1:4000/> in your browser to see the site.
 
 See the [Jekyll documentation](https://jekyllrb.com/docs/home/) for more info on developing a static site with Jekyll.
