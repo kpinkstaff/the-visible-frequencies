@@ -22,3 +22,4 @@ See the [Jekyll documentation](https://jekyllrb.com/docs/home/) for more info on
 - [ ] Add Google Analytics
 - [ ] Make landscape photos have wider thumbnails
 - [ ] Experiment with selling prints
+- [ ] Make link previews work in social media sites.
